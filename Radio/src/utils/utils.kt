@@ -7,12 +7,6 @@ class Radio (
         var station: Double = 0.0,
         var volume: Int = 0
 ) {
-    fun menu(): String {
-        return """
-            Menu:
-                
-        """.trimIndent()
-    }
     fun turnOn() {
         isTurnOn = true
     }
