@@ -1,11 +1,13 @@
-package main
+//Francisco Rosal 18676
+//07/07/2018
 
+package main
 import main.utils.*
 
 fun main(args: Array<String>) {
     println("Hello to your Radio \nName your Radio: ")
     val newName = readLine()!!
-
+    //Se crea el objeto Radio
     val newRadio = Radio(
             name = newName
     )
@@ -41,7 +43,6 @@ fun main(args: Array<String>) {
                 else -> println("Opcion incorrecta")
             }
         }
-
     } while (salir)
 
 }
