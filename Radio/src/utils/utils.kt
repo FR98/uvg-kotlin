@@ -7,6 +7,26 @@ class Radio (
         var station: Double = 0.0,
         var volume: Int = 0
 ) {
+    fun menu(): String {
+        if (isTurnOn == false) {
+            return """
+                    Menu:
+                1. Encender
+                2. Salir
+            """.trimIndent()
+        } else {
+            return """
+                Menu:
+            1. Apagar
+            2. Cambiar Frecuencia
+            3. Subir estacion
+            4. Bajar estacion
+            5. Subir volumen
+            6. Bajar volumen
+            7. Salir
+        """.trimIndent()
+        }
+    }
     fun turnOn() {
         isTurnOn = true
     }
@@ -50,7 +70,7 @@ class Radio (
     override fun toString(): String {
         return """
             Radio $name:
-                On/Off: $isTurnOn
+                On: $isTurnOn
                 Frecuencia: $frequency
                 Estacion: $station
                 Volumen: $volume
