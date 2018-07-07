@@ -7,6 +7,12 @@ class Radio (
         var station: Double = 0.0,
         var volume: Int = 0
 ) {
+    fun menu(): String {
+        return """
+            Menu:
+                
+        """.trimIndent()
+    }
     fun turnOn() {
         isTurnOn = true
     }
@@ -51,9 +57,9 @@ class Radio (
         return """
             Radio $name:
                 On/Off: $isTurnOn
-                Frequency: $frequency
-                Station: $station
-                Volume: $volume
+                Frecuencia: $frequency
+                Estacion: $station
+                Volumen: $volume
         """.trimIndent()
     }
 }
