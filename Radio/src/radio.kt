@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
 
     do {
         var salir = false
-        println(newRadio)
+        println("\n $newRadio")
         println()
         println(newRadio.menu())
 
@@ -65,7 +65,6 @@ fun main(args: Array<String>) {
                             }
                         }
                     } while (!okJumps)
-
                 }
                 "5" -> newRadio.moreVolume()
                 "6" -> newRadio.lessVolume()

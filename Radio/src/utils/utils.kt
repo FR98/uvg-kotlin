@@ -5,7 +5,7 @@ class Radio (
         val name: String,
         var isTurnOn: Boolean = false,
         var frequency: String = "FM",
-        var station: Double = 0.0,
+        var station: Double = 100.0,
         var volume: Int = 0
 ) {
     //Metodos
@@ -21,12 +21,14 @@ class Radio (
                 5. Subir volumen
                 6. Bajar volumen
                 7. Salir
+
         """.trimIndent()
         } else {
             return """
                     Menu:
                 1. Encender
                 2. Salir
+
             """.trimIndent()
         }
     }
@@ -51,17 +53,33 @@ class Radio (
     //Sube la estacion
     fun upperStation(step: Double) {
         if (frequency == "FM" && station < 100) {
-            station += step
+            if ((station + step) < 100) {
+                station += step
+            } else {
+                station = 100.0
+            }
         } else if (frequency == "AM" && station < 1400){
-            station += step
+            if ((station + step) < 1400) {
+                station += step
+            } else {
+                station = 1400.0
+            }
         }
     }
     //Baja la estacion
     fun lowerStation(step: Double) {
         if (frequency == "FM" && station > 87) {
-            station -= step
+            if ((station - step) > 87) {
+                station -= step
+            } else {
+                station = 87.0
+            }
         } else if (frequency == "AM" && station > 1000){
-            station -= step
+            if ((station - step) > 1000) {
+                station -= step
+            } else {
+                station = 1000.0
+            }
         }
     }
     //Sube volumen
@@ -81,9 +99,9 @@ class Radio (
         return """
             Radio $name:
                 On: $isTurnOn
-                Frecuencia: $frequency
-                Estacion: $station
-                Volumen: $volume
+                ${if(isTurnOn){"Frecuencia: $frequency"}else{""}}
+                ${if(isTurnOn){"Estacion: $station"}else{""}}
+                ${if(isTurnOn){"Volumen: $volume"}else{""}}
         """.trimIndent()
     }
 }
