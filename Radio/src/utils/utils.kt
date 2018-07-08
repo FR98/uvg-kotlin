@@ -1,3 +1,6 @@
+//Francisco Rosal 18676
+//07/07/2018
+
 package main.utils
 
 class Radio (
@@ -5,7 +8,7 @@ class Radio (
         val name: String,
         var isTurnOn: Boolean = false,
         var frequency: String = "FM",
-        var station: Double = 100.0,
+        var station: Double = 87.0,
         var volume: Int = 0
 ) {
     //Metodos
@@ -99,9 +102,10 @@ class Radio (
         return """
             Radio $name:
                 On: $isTurnOn
-                ${if(isTurnOn){"Frecuencia: $frequency"}else{""}}
-                ${if(isTurnOn){"Estacion: $station"}else{""}}
-                ${if(isTurnOn){"Volumen: $volume"}else{""}}
+                ${if (isTurnOn) {"Frecuencia: $frequency"} else {""}}
+                ${if (isTurnOn) {"Estacion: $station"} else {""}}
+                ${if (isTurnOn) {"Volumen: $volume"} else {""}}
+
         """.trimIndent()
     }
 }

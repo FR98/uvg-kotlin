@@ -14,10 +14,11 @@ fun main(args: Array<String>) {
 
     do {
         var salir = false
+        //Se muestra el estado del Radio y su menu
         println("\n $newRadio")
-        println()
         println(newRadio.menu())
 
+        //Se valida la opcion ingresada segun el estado
         var okOption: Boolean
         var action: String
         do {
@@ -28,14 +29,16 @@ fun main(args: Array<String>) {
                     "1","2","3","4","5","6","7" -> {okOption = true}
                     else -> {
                         println("Opcion invalida")
-                        okOption = false}
+                        okOption = false
+                        }
                 }
             } else {
                 when (action) {
                     "1","2" -> {okOption = true}
                     else -> {
                         println("Opcion invalida")
-                        okOption = false}
+                        okOption = false
+                        }
                 }
             }
         } while (!okOption)
@@ -49,7 +52,7 @@ fun main(args: Array<String>) {
                     var jumps: Double
                     var okJumps  = false
                     do {
-                        println("De cuanto en cuanto? ")
+                        println("Cuanto desea desplazarse? ")
                         strJumps = readLine()
                         if (strJumps != null) {
                             try {
@@ -84,6 +87,6 @@ fun main(args: Array<String>) {
                 else -> println(".")
             }
         }
-    } while (!salir)
 
+    } while (!salir)
 }
