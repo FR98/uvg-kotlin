@@ -176,13 +176,13 @@
     <layout>
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="bottom" id="TODO" order="8" />
-      <window_info active="true" anchor="bottom" id="Messages" order="9" visible="true" weight="0.13531353" />
+      <window_info anchor="bottom" id="Messages" order="9" visible="true" weight="0.13531353" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info id="Image Layers" order="0" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" weight="0.3290938" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="right" id="Run" order="8" visible="true" weight="0.32869694" />
+      <window_info active="true" anchor="right" id="Run" order="8" visible="true" weight="0.32869694" />
       <window_info anchor="bottom" id="Version Control" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="2" weight="0.3290938" />
       <window_info id="Capture Tool" order="1" />

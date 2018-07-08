@@ -17,7 +17,28 @@ fun main(args: Array<String>) {
         println(newRadio)
         println()
         println(newRadio.menu())
-        val action = readLine()!!
+
+        var okOption: Boolean
+        var action: String
+        do {
+            println("Ingrese una opcion: ")
+            action = readLine()!!
+            if (newRadio.isTurnOn) {
+                when (action) {
+                    "1","2","3","4","5","6","7" -> {okOption = true}
+                    else -> {
+                        println("Opcion invalida")
+                        okOption = false}
+                }
+            } else {
+                when (action) {
+                    "1","2" -> {okOption = true}
+                    else -> {
+                        println("Opcion invalida")
+                        okOption = false}
+                }
+            }
+        } while (!okOption)
 
         if (newRadio.isTurnOn) {
             when (action) {
@@ -52,7 +73,7 @@ fun main(args: Array<String>) {
                     println("Hasta la proxima")
                     salir = true
                 }
-                else -> println("Opcion incorrecta")
+                else -> println(".")
             }
         } else {
             when (action) {
@@ -61,9 +82,9 @@ fun main(args: Array<String>) {
                     println("Hasta la proxima")
                     salir = true
                 }
-                else -> println("Opcion incorrecta")
+                else -> println(".")
             }
         }
-    } while (salir)
+    } while (!salir)
 
 }
