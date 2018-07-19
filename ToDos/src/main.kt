@@ -69,7 +69,44 @@ fun main(args: Array<String>) {
                             var opcion = readLine()!!
                             when (opcion) {
                                 "1" -> continuar2 = false
-                                "2" ->
+                                "2" -> {
+                                    println("Ingrese el nombre de la nueva Tarea: ")
+                                    var input = readLine()!!
+                                    val nuevaTarea = Tarea(
+                                            name = input
+                                    )
+                                    lista.addTarea(nuevaTarea)
+                                }
+                                "3" -> {
+                                    println("Completar Tarea:")
+                                    contador = 0
+                                    for (i: Tarea in lista.tareas){
+                                        contador += 1
+                                        println("$contador $i.name")
+                                    }
+                                    println("Ingrese el numero de la Tarea a completar: ")
+                                    var input = readLine()!!
+                                    var tareaSelec = input.toInt()
+                                    if (tareaSelec < lista.tareas.count() && tareaSelec > 0){
+                                        var tarea = lista.tareas.get(tareaSelec)
+                                        tarea.completada = true
+                                        println("Tarea completada exitosamente")
+                                    }
+                                }
+                                "4" -> {
+                                    println("Tareas de la lista:")
+                                    contador = 0
+                                    for (i: Tarea in lista.tareas){
+                                        contador += 1
+                                        println("$contador $i.name ${if (i.completada){
+                                            println("(Completada)")}else{
+                                            println("(Sin completar)")}}")
+                                    }
+                                }
+                                "5" -> {
+                                    println("Eliminar tarea")
+                                }
+                                "6" -> continuar2 = false
                             }
                         } while (continuar2)
                     }

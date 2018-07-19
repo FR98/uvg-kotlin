@@ -24,6 +24,7 @@ fun menu3(lista: ListaDeTareas): String {
                 2. Agregar una Tarea a Lista ${lista.name}
                 3. Completar una Tarea
                 4. Ver Tareas en la Lista ${lista.name}
-                5. Salir
+                5. Eliminar tarea
+                6. Salir
             """.trimIndent()
 }
