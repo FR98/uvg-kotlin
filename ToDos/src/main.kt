@@ -89,7 +89,11 @@ fun main(args: Array<String>) {
                                     var tareaSelec = input.toInt()
                                     if (tareaSelec < lista.tareas.count() && tareaSelec > 0){
                                         var tarea = lista.tareas.get(tareaSelec)
-                                        tarea.completada = true
+                                        if (tarea.completada) {
+                                            tarea.completada = false
+                                        } else {
+                                            tarea.completada = true
+                                        }
                                         println("Tarea completada exitosamente")
                                     }
                                 }
@@ -105,6 +109,19 @@ fun main(args: Array<String>) {
                                 }
                                 "5" -> {
                                     println("Eliminar tarea")
+                                    contador = 0
+                                    for (i: Tarea in lista.tareas){
+                                        contador += 1
+                                        println("$contador $i.name")
+                                    }
+                                    println("Ingrese el numero de la Tarea a eliminar: ")
+                                    var input = readLine()!!
+                                    var tareaSelec = input.toInt()
+                                    if (tareaSelec < lista.tareas.count() && tareaSelec > 0){
+                                        var tarea = lista.tareas.get(tareaSelec)
+                                        lista.tareas.remove(tarea)
+                                    }
+
                                 }
                                 "6" -> continuar2 = false
                             }
