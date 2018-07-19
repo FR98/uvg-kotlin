@@ -13,4 +13,12 @@ class ListaDeTareas(
     fun deleteTarea() {
         pass
     }*/
+
+    override fun toString(): String {
+        val tareasNames = tareas.joinToString()
+        return """
+            Lista: $name
+            Tareas: $tareasNames
+        """.trimIndent()
+    }
 }

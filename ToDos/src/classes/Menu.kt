@@ -18,12 +18,12 @@ fun menu2(): String {
             """.trimIndent()
 }
 
-fun menu3(): String {
+fun menu3(lista: ListaDeTareas): String {
     return """
-                1. Deseleccionar Lista Actual
-                2. Agregar una Tarea
+                1. Deseleccionar Lista Actual: ${lista.name}
+                2. Agregar una Tarea a Lista ${lista.name}
                 3. Completar una Tarea
-                4. Ver Tareas en la Lista
+                4. Ver Tareas en la Lista ${lista.name}
                 5. Salir
             """.trimIndent()
 }
