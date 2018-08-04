@@ -2,6 +2,7 @@ package main.classes
 
 fun menu1(): String {
     return """
+
                     Menu:
                 1. Crear Lista de Tareas
                 2. Salir
@@ -10,6 +11,7 @@ fun menu1(): String {
 
 fun menu2(): String {
     return """
+
                     Menu:
                 1. Crear Lista de Tareas
                 2. Ver Listas de Tareas
@@ -20,6 +22,7 @@ fun menu2(): String {
 
 fun menu3(lista: ListaDeTareas): String {
     return """
+
                 1. Deseleccionar Lista Actual: ${lista.name}
                 2. Agregar una Tarea a Lista ${lista.name}
                 3. Completar una Tarea

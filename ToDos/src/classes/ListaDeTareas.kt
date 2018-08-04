@@ -4,8 +4,6 @@ class ListaDeTareas(
         val name: String,
         val tareas: ArrayList<Tarea> = ArrayList()
 ) {
-    //Metodos
-
     fun addTarea(tareaNueva: Tarea) {
         tareas.add(tareaNueva)
     }
@@ -15,10 +13,10 @@ class ListaDeTareas(
     }*/
 
     override fun toString(): String {
-        val tareasNames = tareas.joinToString()
         return """
             Lista: $name
-            Tareas: $tareasNames
+                Tareas:
+                ${tareas.forEach {it.name + "\n"}}
         """.trimIndent()
     }
 }
