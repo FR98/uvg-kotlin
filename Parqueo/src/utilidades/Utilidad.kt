@@ -9,9 +9,9 @@ fun loadFile(structureFileName: String): MutableList<MutableList<Char>> {
     return linesOfFile
 }
 
-fun fileToString(strucctureFileName: String): MutableList<MutableList<String>> {
+fun fileToString(structureFileName: String): MutableList<MutableList<String>> {
     val mapaNivel: MutableList<MutableList<String>> = mutableListOf()
-    val mapStructure = loadFile(strucctureFileName)
+    val mapStructure = loadFile(structureFileName)
     for (line in mapStructure) {
         var lineOfStrings = mutableListOf<String>()
         for (element in line) {
@@ -19,13 +19,13 @@ fun fileToString(strucctureFileName: String): MutableList<MutableList<String>> {
         }
         mapaNivel.add(lineOfStrings)
     }
+
     return mapaNivel
 }
 
-fun acceptedFile(strucctureFileName: String): Boolean {
-    //val mapaAceptado: MutableList<MutableList<String>> = mutableListOf()
+fun acceptedFile(structureFileName: String): Boolean {
     val listaParqueos = mutableListOf<String>()
-    val fileToProcess = fileToString(strucctureFileName)
+    val fileToProcess = fileToString(structureFileName)
 
     for (line in fileToProcess) {
         for (element in line) {
@@ -36,15 +36,11 @@ fun acceptedFile(strucctureFileName: String): Boolean {
             } else {
                 if (listaParqueos.contains(element)) {
                     return false
-                } else {
-                    listaParqueos.add(element)
                 }
+                listaParqueos.add(element)
             }
         }
     }
-    return true
-}
 
-fun leerMapa() {
-    //TODO
+    return true
 }
