@@ -5,21 +5,10 @@ class Nivel (
         val name: String,
         val color: String,
         val structureFileName: String,
+        val mapaNivel: MutableList<MutableList<String>>,
         val placas: MutableList<String> = mutableListOf(),
         var full: Boolean = false
 ) {
-    fun getIDProp(): String {
-        return "ID: $id"
-    }
-
-    fun getNameProp(): String {
-        return "Name: $name"
-    }
-
-    fun getColorProp(): String {
-        return "Color: $color"
-    }
-
     fun isFull(): Boolean {
         //TODO
         return false
@@ -27,5 +16,23 @@ class Nivel (
 
     fun addVehiculo(placa: String, nivel: Int, posicion: String) {
         //TODO
+    }
+
+    override fun toString(): String {
+        var nivelString = """
+            Nivel ${id}: ${name}
+                Color: ${color}
+                Mapa:
+
+        """.trimIndent()
+
+        for (line in mapaNivel) {
+            for (element in line) {
+                nivelString += element
+            }
+            nivelString += "\n"
+        }
+
+        return nivelString
     }
 }
