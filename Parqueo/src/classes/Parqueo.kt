@@ -8,6 +8,17 @@ class Parqueo (
 ) {
     fun addNewNivel(id: String, name: String, color: String, structureFileName: String): String {
         val idInt: Int = id.toInt()
+
+        /*for (nivel in niveles) {
+            if (nivel.id == idInt) {
+                if (nivel.name == name) {
+                    if (nivel.color != color) {
+
+                    }
+                }
+            }
+        }*/
+
         if (acceptedFile(structureFileName)) {
             val mapaNivel = fileToString(structureFileName)
             niveles.add(Nivel(idInt,name,color,structureFileName, mapaNivel))
@@ -15,6 +26,7 @@ class Parqueo (
         } else {
             return "Nivel no aceptado"
         }
+
     }
 
     fun removeNivel(id: String): String {
