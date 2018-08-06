@@ -27,20 +27,20 @@ fun main(args: Array<String>) {
                             //Crear Nivel
                             println("Crear un nuevo Nivel:")
                             println("Ingrese el numero del Nivel (id): ")
-                            var id = readLine()!!
+                            val id = readLine()!!
                             println("Ingrese el nombre del Nivel: ")
-                            var name = readLine()!!
+                            val name = readLine()!!
                             println("Ingrese el color representativo del Nivel: ")
-                            var color = readLine()!!
+                            val color = readLine()!!
                             println("Ingrese el nombre de archivo de estructura del Nivel: ")
-                            var structureFileName = readLine()!!
+                            val structureFileName = readLine()!!
                             println(parqueo.addNewNivel(id, name, color, structureFileName))
                         }
                         "2" -> {
                             //Eliminar Nivel
                             println("Eliminar Nivel:")
                             println("Ingrese el numero del Nivel (id): ")
-                            var id = readLine()!!
+                            val id = readLine()!!
                             println(parqueo.removeNivel(id))
                         }
                         "3" -> {
@@ -63,6 +63,19 @@ fun main(args: Array<String>) {
                     when (opcion) {
                         "1" -> {
                             //Ingresar Placa
+                            if (!parqueo.isFull()) {
+                                println("Ingrese el numero de placa: ")
+                                val placa = readLine()!!
+                                println(parqueo.newVehiculo(placa))
+                                println("Ingrese el nivel al que desea acceder: ")
+                                val nivelID = readLine()!!
+                                println(parqueo.verificarNivel(nivelID))
+                                println("Ingrese el parqueo deseado: ")
+                                val posicion = readLine()!!
+                                println(parqueo.addVehiculoToNivel(placa, nivelID, posicion))
+                            } else {
+                                println("Lo sentimos, ya no hay espacio disponible.")
+                            }
                         }
                         "2" -> {
                             continuar3 = false

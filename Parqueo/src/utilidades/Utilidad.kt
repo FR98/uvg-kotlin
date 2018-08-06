@@ -3,8 +3,8 @@ package main.utilidades
 import java.io.File
 
 fun loadFile(structureFileName: String): MutableList<MutableList<Char>> {
-    val ubicacion: String = "parqueos/Parqueo1/"+structureFileName +".txt"
-    var linesOfFile: MutableList<MutableList<Char>> = mutableListOf()
+    val ubicacion = "parqueos/Parqueo1/$structureFileName.txt"
+    val linesOfFile: MutableList<MutableList<Char>> = mutableListOf()
     File(ubicacion).forEachLine { linesOfFile.add(it.toMutableList()) }
     return linesOfFile
 }
@@ -13,7 +13,7 @@ fun fileToString(structureFileName: String): MutableList<MutableList<String>> {
     val mapaNivel: MutableList<MutableList<String>> = mutableListOf()
     val mapStructure = loadFile(structureFileName)
     for (line in mapStructure) {
-        var lineOfStrings = mutableListOf<String>()
+        val lineOfStrings = mutableListOf<String>()
         for (element in line) {
             lineOfStrings.add(element.toString())
         }

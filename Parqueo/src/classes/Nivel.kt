@@ -4,24 +4,43 @@ class Nivel (
         val id: Int,
         val name: String,
         val color: String,
-        val structureFileName: String,
-        val mapaNivel: MutableList<MutableList<String>>,
-        val placas: MutableList<String> = mutableListOf(),
-        var full: Boolean = false
+        private val structureFileName: String,
+        private val mapaNivel: MutableList<MutableList<String>>,
+        val placas: MutableList<String> = mutableListOf()
 ) {
     fun isFull(): Boolean {
-        //TODO
-        return false
+        for (l in mapaNivel) {
+            for (e in l) {
+                if (e == "*") {
+                    continue
+                } else if (e == " ") {
+                    continue
+                } else if (e == "@"){
+                    continue
+                } else {
+                    return false
+                }
+            }
+        }
+        return true
     }
 
-    fun addVehiculo(placa: String, nivel: Int, posicion: String) {
-        //TODO
+    fun addVehiculo(placa: String, posicion: String) {
+        placas.add(placa)
+        for (l in mapaNivel) {
+            for (e in l.indices) {
+                if (l[e] == posicion) {
+                    l[e] = "@"
+                }
+            }
+        }
     }
 
     override fun toString(): String {
         var nivelString = """
-            Nivel ${id}: ${name}
-                Color: ${color}
+            Nivel $id: $name
+                Color: $color
+                Ubicacion de archivo: $structureFileName
                 Mapa:
 
         """.trimIndent()
