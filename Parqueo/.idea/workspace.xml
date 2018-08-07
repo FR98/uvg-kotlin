@@ -12,7 +12,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="263">
@@ -42,7 +42,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Utilidad.kt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Utilidad.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/utilidades/Utilidad.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
@@ -219,9 +219,9 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info active="true" anchor="right" id="Run" order="8" visible="true" weight="0.46747354" />
+      <window_info anchor="right" id="Run" order="8" visible="true" weight="0.20272315" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32933104" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32933104" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.113464445" />
@@ -409,13 +409,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/Vehiculo.kt" />
-    <entry file="file://$PROJECT_DIR$/src/utilidades/Utilidad.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/Nivel.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -437,6 +430,13 @@
           <folding>
             <element signature="e#33#85#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilidades/Utilidad.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
