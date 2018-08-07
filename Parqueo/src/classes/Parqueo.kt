@@ -22,22 +22,23 @@ class Parqueo (
 
     }
 
-    fun removeNivel(id: String): String {
-        val idInt: Int = id.toInt()
-        if ((idInt-1) < niveles.size) {
-            niveles.removeAt(idInt-1)
+    fun removeNivel(nivelID: String): String {
+        if (niveles.contains(getNivel(nivelID))) {
+            niveles.remove(getNivel(nivelID))
             return "Nivel eliminado satisfactoriamente"
         }
         return "Nivel no encontrado"
     }
 
     fun isFull(): Boolean {
+        val nivelesLlenos = mutableListOf<Boolean>()
         for (nivel in niveles) {
-            if (nivel.isFull()) {
-                return true
-            }
+            nivelesLlenos.add(nivel.isFull())
         }
-        return false
+        if (nivelesLlenos.contains(false)) {
+            return false
+        }
+        return true
     }
 
     fun placaEnParqueo(placa: String): Boolean {

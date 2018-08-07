@@ -29,9 +29,11 @@ class Nivel (
         placas.add(placa)
         for (l in mapaNivel) {
             for (e in l.indices) {
-                if (l[e] == posicion) {
-                    l[e] = "@"
-                    return true
+                if (posicion != "*" && posicion != " ") {
+                    if (l[e] == posicion) {
+                        l[e] = "@"
+                        return true
+                    }
                 }
             }
         }
