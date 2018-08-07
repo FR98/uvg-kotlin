@@ -1,40 +1,42 @@
 package main.classes
 
 class Nivel (
-        val id: Int,
-        val name: String,
-        val color: String,
+        private val id: Int,
+        private val name: String,
+        private val color: String,
         private val structureFileName: String,
-        private val mapaNivel: MutableList<MutableList<String>>,
-        val placas: MutableList<String> = mutableListOf()
+        private val ancho: Int,
+        private val largo: Int,
+        private val listaEstacionamiento: MutableList<Estacionamiento>,
+        private val listaParedes: MutableList<Pared>,
+        private val listaTransitables: MutableList<EspacioTransitable>
 ) {
+    fun getId(): Int {
+        return id
+    }
+
+    fun getName(): String {
+        return name
+    }
+
+    fun getColor(): String {
+        return color
+    }
+
     fun isFull(): Boolean {
-        for (l in mapaNivel) {
-            for (e in l) {
-                if (e == "*") {
-                    continue
-                } else if (e == " ") {
-                    continue
-                } else if (e == "@"){
-                    continue
-                } else {
-                    return false
-                }
+        for (estacionamiento in listaEstacionamiento) {
+            if (!estacionamiento.getIsOcupado()) {
+                return false
             }
         }
         return true
     }
 
     fun addVehiculo(placa: String, posicion: String): Boolean {
-        placas.add(placa)
-        for (l in mapaNivel) {
-            for (e in l.indices) {
-                if (posicion != "*" && posicion != " ") {
-                    if (l[e] == posicion) {
-                        l[e] = "@"
-                        return true
-                    }
-                }
+        for (estacionamiento in listaEstacionamiento) {
+            if (estacionamiento.getId() == posicion) {
+                estacionamiento.ocupar(placa)
+                return true
             }
         }
         return false
@@ -49,7 +51,7 @@ class Nivel (
 
         """.trimIndent()
 
-        for (line in mapaNivel) {
+        for (line in mapa) {
             for (element in line) {
                 nivelString += element
             }

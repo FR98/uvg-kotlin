@@ -8,18 +8,43 @@ class Parqueo (
 ) {
     fun addNewNivel(id: String, name: String, color: String, structureFileName: String): String {
         for (nivel in niveles) {
-            if (nivel.id == id.toInt() || nivel.name == name || nivel.color == color) {
+            if (nivel.getId() == id.toInt() || nivel.getName() == name || nivel.getColor() == color) {
                 return "Nivel no aceptado"
             }
         }
 
         if (acceptedFile(structureFileName)) {
             val mapaNivel = fileToString(structureFileName)
-            niveles.add(Nivel(id.toInt(),name,color,structureFileName, mapaNivel))
+            createNivel(id.toInt(), name, color, structureFileName, mapaNivel)
             return "Nivel creado exitosamente"
         }
         return "Nivel no aceptado"
+    }
 
+    fun createNivel(id: Int, name: String, color: String, structureFileName: String, mapaNivel: MutableList<MutableList<String>>) {
+        val listaParedes = mutableListOf<Pared>()
+        val listaEspacios = mutableListOf<EspacioTransitable>()
+        val listaEstacionamiento = mutableListOf<Estacionamiento>()
+        val ancho = mapaNivel.size
+        var largo = 0
+
+        for (l in mapaNivel.indices) {
+            for (e in mapaNivel[l].indices) {
+                when (mapaNivel[l][e]) {
+                    "*" -> {
+                        listaParedes.add(Pared(e, l))
+                    }
+                    " " -> {
+                        listaEspacios.add(EspacioTransitable(e, l))
+                    }
+                    else -> {
+                        listaEstacionamiento.add(Estacionamiento(mapaNivel[l][e], e, l))
+                    }
+                }
+            }
+            largo = mapaNivel[l].size
+        }
+        niveles.add(Nivel(id, name, color, structureFileName, ancho, largo, listaEstacionamiento, listaParedes, listaEspacios))
     }
 
     fun removeNivel(nivelID: String): String {
@@ -67,7 +92,7 @@ class Parqueo (
         var nivelesDisponibles = "\nNiveles Disponibles: \n"
         for (nivel in niveles) {
             if (!nivel.isFull()) {
-                nivelesDisponibles += "Nivel ${nivel.id}: ${nivel.name} \n"
+                nivelesDisponibles += "Nivel ${nivel.getId()}: ${nivel.getName()} \n"
             }
         }
         return nivelesDisponibles
@@ -75,7 +100,7 @@ class Parqueo (
 
     fun getNivel(nivelID: String): Nivel? {
         for (nivel in niveles) {
-            if (nivel.id == nivelID.toInt()) {
+            if (nivel.getId() == nivelID.toInt()) {
                 return nivel
             }
         }

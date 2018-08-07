@@ -1,10 +1,8 @@
 //Francisco Rosal
-
 package main
 
 import main.classes.Parqueo
 import main.utilidades.*
-
 
 fun main(args: Array<String>) {
     println("BIENVENIDO")

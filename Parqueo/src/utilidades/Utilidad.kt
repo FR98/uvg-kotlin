@@ -9,20 +9,6 @@ fun loadFile(structureFileName: String): MutableList<MutableList<Char>> {
     return linesOfFile
 }
 
-fun fileToString(structureFileName: String): MutableList<MutableList<String>> {
-    val mapaNivel: MutableList<MutableList<String>> = mutableListOf()
-    val mapStructure = loadFile(structureFileName)
-    for (line in mapStructure) {
-        val lineOfStrings = mutableListOf<String>()
-        for (element in line) {
-            lineOfStrings.add(element.toString())
-        }
-        mapaNivel.add(lineOfStrings)
-    }
-
-    return mapaNivel
-}
-
 fun acceptedFile(structureFileName: String): Boolean {
     val listaParqueos = mutableListOf<String>()
     val fileToProcess = fileToString(structureFileName)
@@ -43,4 +29,18 @@ fun acceptedFile(structureFileName: String): Boolean {
     }
 
     return true
+}
+
+fun fileToString(structureFileName: String): MutableList<MutableList<String>> {
+    val mapaNivel: MutableList<MutableList<String>> = mutableListOf()
+    val mapStructure = loadFile(structureFileName)
+    for (line in mapStructure) {
+        val lineOfStrings = mutableListOf<String>()
+        for (element in line) {
+            lineOfStrings.add(element.toString())
+        }
+        mapaNivel.add(lineOfStrings)
+    }
+
+    return mapaNivel
 }
