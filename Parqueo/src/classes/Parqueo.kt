@@ -7,17 +7,15 @@ class Parqueo (
         private val niveles: MutableList<Nivel> = mutableListOf()
 ) {
     fun addNewNivel(id: String, name: String, color: String, structureFileName: String): String {
-        val idInt: Int = id.toInt()
-
         for (nivel in niveles) {
-            if (nivel.id == idInt || nivel.name == name || nivel.color == color) {
+            if (nivel.id == id.toInt() || nivel.name == name || nivel.color == color) {
                 return "Nivel no aceptado"
             }
         }
 
         if (acceptedFile(structureFileName)) {
             val mapaNivel = fileToString(structureFileName)
-            niveles.add(Nivel(idInt,name,color,structureFileName, mapaNivel))
+            niveles.add(Nivel(id.toInt(),name,color,structureFileName, mapaNivel))
             return "Nivel creado exitosamente"
         }
         return "Nivel no aceptado"
@@ -42,16 +40,30 @@ class Parqueo (
         return false
     }
 
-    fun newVehiculo(placa: String): String {
+    fun placaEnParqueo(placa: String): Boolean {
         for (nivel in niveles) {
             if (nivel.placas.contains(placa)) {
-                return """
+                return true
+            }
+        }
+        return false
+    }
+
+    fun mostrarUbicacionPlaca(placa: String): String {
+        var ubicacion = ""
+        for (nivel in niveles) {
+            if (nivel.placas.contains(placa)) {
+                ubicacion += """
                     Vehiculo con placa: $placa encontrado en:
                     $nivel
                 """.trimIndent()
             }
         }
-        var nivelesDisponibles = ""
+        return ubicacion
+    }
+
+    fun mostrarNivelesDisponibles(): String {
+        var nivelesDisponibles = "\nNiveles Disponibles: \n"
         for (nivel in niveles) {
             if (!nivel.isFull()) {
                 nivelesDisponibles += "Nivel ${nivel.id}: ${nivel.name} \n"
@@ -60,23 +72,27 @@ class Parqueo (
         return nivelesDisponibles
     }
 
-    fun verificarNivel(nivelID: String): String {
+    fun getNivel(nivelID: String): Nivel? {
         for (nivel in niveles) {
             if (nivel.id == nivelID.toInt()) {
-                if (!nivel.isFull()) {
-                    return "$nivel"
-                }
+                return nivel
             }
         }
-        return "Nivel incorrecto"
+        return null
     }
 
-    fun addVehiculoToNivel(placa: String, nivelID: String, posicion: String) {
-        for (nivel in niveles) {
-            if (nivel.id == nivelID.toInt()) {
-                nivel.addVehiculo(placa, posicion)
+    fun nivelDisponible(nivelID: String): Boolean {
+        if (niveles.contains(getNivel(nivelID))) {
+            if (getNivel(nivelID)!!.isFull()) {
+                return false
             }
+            return true
         }
+        return false
+    }
+
+    fun addVehiculoToNivel(placa: String, nivelID: String, posicion: String): Boolean {
+        return getNivel(nivelID)!!.addVehiculo(placa, posicion)
     }
 
     override fun toString(): String {

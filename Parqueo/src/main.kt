@@ -66,13 +66,22 @@ fun main(args: Array<String>) {
                             if (!parqueo.isFull()) {
                                 println("Ingrese el numero de placa: ")
                                 val placa = readLine()!!
-                                println(parqueo.newVehiculo(placa))
-                                println("Ingrese el nivel al que desea acceder: ")
-                                val nivelID = readLine()!!
-                                println(parqueo.verificarNivel(nivelID))
-                                println("Ingrese el parqueo deseado: ")
-                                val posicion = readLine()!!
-                                println(parqueo.addVehiculoToNivel(placa, nivelID, posicion))
+                                if (parqueo.placaEnParqueo(placa)) {
+                                    println(parqueo.mostrarUbicacionPlaca(placa))
+                                } else {
+                                    var nivelID: String
+                                    do {
+                                        println(parqueo.mostrarNivelesDisponibles())
+                                        println("Ingrese el nivel al que desea acceder: ")
+                                        nivelID = readLine()!!
+                                    } while (!parqueo.nivelDisponible(nivelID))
+                                    var posicion: String
+                                    do {
+                                        println(parqueo.getNivel(nivelID))
+                                        println("Ingrese el parqueo deseado: ")
+                                        posicion = readLine()!!
+                                    } while (!parqueo.addVehiculoToNivel(placa, nivelID, posicion))
+                                }
                             } else {
                                 println("Lo sentimos, ya no hay espacio disponible.")
                             }

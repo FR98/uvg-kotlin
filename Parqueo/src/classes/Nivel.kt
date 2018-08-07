@@ -25,15 +25,17 @@ class Nivel (
         return true
     }
 
-    fun addVehiculo(placa: String, posicion: String) {
+    fun addVehiculo(placa: String, posicion: String): Boolean {
         placas.add(placa)
         for (l in mapaNivel) {
             for (e in l.indices) {
                 if (l[e] == posicion) {
                     l[e] = "@"
+                    return true
                 }
             }
         }
+        return false
     }
 
     override fun toString(): String {
