@@ -64,8 +64,8 @@ fun main(args: Array<String>) {
                             if (!parqueo.isFull()) {
                                 println("Ingrese el numero de placa: ")
                                 val placa = readLine()!!
-                                if (parqueo.placaEnParqueo(placa)) {
-                                    println(parqueo.mostrarUbicacionPlaca(placa))
+                                if (parqueo.placaEnParqueo(placa) != null) {
+                                    println(parqueo.placaEnParqueo(placa))
                                 } else {
                                     var nivelID: String
                                     do {

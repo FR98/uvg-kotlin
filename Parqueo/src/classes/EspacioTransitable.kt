@@ -4,7 +4,11 @@ class EspacioTransitable (
     private val posX: Int,
     private val posY: Int
 ) {
-    override fun toString(): String {
-        return " "
+    fun getPosX(): Int {
+        return posX
+    }
+
+    fun getPosY(): Int {
+        return posY
     }
 }

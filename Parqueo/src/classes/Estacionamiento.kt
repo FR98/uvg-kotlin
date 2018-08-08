@@ -11,8 +11,20 @@ class Estacionamiento (
         return id
     }
 
+    fun getPosX(): Int {
+        return posX
+    }
+
+    fun getPosY(): Int {
+        return posY
+    }
+
     fun getIsOcupado(): Boolean {
         return isOcupado
+    }
+
+    fun getPlaca(): String {
+        return placa
     }
 
     fun ocupar(placa: String) {

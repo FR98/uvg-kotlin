@@ -21,7 +21,7 @@ class Parqueo (
         return "Nivel no aceptado"
     }
 
-    fun createNivel(id: Int, name: String, color: String, structureFileName: String, mapaNivel: MutableList<MutableList<String>>) {
+    private fun createNivel(id: Int, name: String, color: String, structureFileName: String, mapaNivel: MutableList<MutableList<String>>) {
         val listaParedes = mutableListOf<Pared>()
         val listaEspacios = mutableListOf<EspacioTransitable>()
         val listaEstacionamiento = mutableListOf<Estacionamiento>()
@@ -66,16 +66,21 @@ class Parqueo (
         return true
     }
 
-    fun placaEnParqueo(placa: String): Boolean {
+    fun placaEnParqueo(placa: String): String? {
         for (nivel in niveles) {
-            if (nivel.placas.contains(placa)) {
-                return true
+            if (nivel.getEstacionamientoConPlaca(placa) != null) {
+                return """
+                    Placa: $placa encontrada en nivel ${nivel.getId()}: ${nivel.getName()}
+
+                    $nivel
+
+                """.trimIndent()
             }
         }
-        return false
+        return null
     }
 
-    fun mostrarUbicacionPlaca(placa: String): String {
+    /*fun mostrarUbicacionPlaca(placa: String): String {
         var ubicacion = ""
         for (nivel in niveles) {
             if (nivel.placas.contains(placa)) {
@@ -86,7 +91,7 @@ class Parqueo (
             }
         }
         return ubicacion
-    }
+    }*/
 
     fun mostrarNivelesDisponibles(): String {
         var nivelesDisponibles = "\nNiveles Disponibles: \n"
