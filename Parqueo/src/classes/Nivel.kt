@@ -84,10 +84,9 @@ class Nivel (
                 Color: $color
                 Ubicacion de archivo: $structureFileName
                 Mapa:
-
         """.trimIndent()
 
-        var mapa = ""
+        var mapa = "\n"
         for (j in 0..ancho) {
             var linea = ""
             for (i in 0..largo) {
@@ -95,7 +94,7 @@ class Nivel (
                     linea += getEstacionamientoEn(i, j)
                 } else if (getParedEn(i, j) != null) {
                     linea += getParedEn(i, j)
-                } else {
+                } else if (getEspacioTransitableEn(i, j) != null) {
                     linea += getEspacioTransitableEn(i, j)
                 }
             }

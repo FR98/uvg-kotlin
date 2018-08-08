@@ -11,4 +11,8 @@ class Pared (
     fun getPosY(): Int {
         return posY
     }
+
+    override fun toString(): String {
+        return "*"
+    }
 }
