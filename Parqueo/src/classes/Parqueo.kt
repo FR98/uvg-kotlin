@@ -80,19 +80,6 @@ class Parqueo (
         return null
     }
 
-    /*fun mostrarUbicacionPlaca(placa: String): String {
-        var ubicacion = ""
-        for (nivel in niveles) {
-            if (nivel.placas.contains(placa)) {
-                ubicacion += """
-                    Vehiculo con placa: $placa encontrado en:
-                    $nivel
-                """.trimIndent()
-            }
-        }
-        return ubicacion
-    }*/
-
     fun mostrarNivelesDisponibles(): String {
         var nivelesDisponibles = "\nNiveles Disponibles: \n"
         for (nivel in niveles) {
