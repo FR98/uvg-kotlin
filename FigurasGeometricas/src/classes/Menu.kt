@@ -1,6 +1,7 @@
 package classes
 
 fun menu1(): String {
+    //Menu Principal
     return """
             Menu Principal
         1. Dibujar figura
@@ -9,6 +10,7 @@ fun menu1(): String {
 }
 
 fun menu2(): String {
+    //Menu Secundario
     return """
             Menu
         1. Dibujar un cuadrado
