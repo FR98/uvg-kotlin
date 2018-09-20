@@ -1,21 +1,32 @@
 package classes
 
-class Rectangulo {
-    var base: Int
-    var altura: Int
+import interfaces.Describible
+import interfaces.Dibujable
+
+class Rectangulo: Describible, Dibujable {
+    override var base: Int
+    override var altura: Int
 
     constructor(_base: Int = 0, _altura: Int = 0) {
         base = _base
         altura = _altura
     }
 
-    fun dibujar() {
-        //TODO
+    override fun dibujar() {
+        for (i in 1..altura) {
+            for (j in 1..base) {
+                print("* ")
+            }
+            print("\n")
+        }
     }
 
-    fun describir() {
-        println("Ingrese la base del cuadrado: ")
+    override fun describir() {
+        println("Ingrese la base del rectangulo: ")
         var baseInput = readLine()!!
         base = baseInput.toInt()
+        println("Ingrese la altura del rectangulo: ")
+        var alturaInput = readLine()!!
+        altura = alturaInput.toInt()
     }
 }

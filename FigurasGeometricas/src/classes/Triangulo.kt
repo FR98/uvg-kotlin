@@ -1,19 +1,29 @@
 package classes
 
-class Triangulo {
-    var base: Int
-    var altura: Int
+import interfaces.Describible
+import interfaces.Dibujable
+
+class Triangulo: Describible, Dibujable {
+    override var base: Int
+    override var altura: Int
 
     constructor(_altura: Int = 0) {
         altura = _altura
         base = altura
     }
 
-    fun dibujar() {
-        //TODO
+    override fun dibujar() {
+        var resultado = ""
+        for (i in 1..altura) {
+            //resultado += " " * (altura - i) + " *" * (i + 1) + "\n"
+
+        }
     }
 
-    fun describir() {
-        //TODO
+    override fun describir() {
+        println("Ingrese la base del triangulo: ")
+        var baseInput = readLine()!!
+        base = baseInput.toInt()
+        altura = base
     }
 }
