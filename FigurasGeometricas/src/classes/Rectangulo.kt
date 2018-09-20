@@ -14,6 +14,8 @@ class Rectangulo {
     }
 
     fun describir() {
-        //TODO
+        println("Ingrese la base del cuadrado: ")
+        var baseInput = readLine()!!
+        base = baseInput.toInt()
     }
 }
