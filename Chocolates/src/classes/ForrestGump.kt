@@ -1,6 +1,6 @@
 package classes
 
-class ForrestGump<Chocolate> (
+class ForrestGump (
         var chocolates: ArrayList<Chocolate> = ArrayList()
 ) {
     fun pickChocolate(chocolate: Chocolate?) {

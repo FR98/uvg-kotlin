@@ -7,8 +7,8 @@ class BoxOfChocolate <Chocolate> (
 ) {
     fun pickOne(): Chocolate? {
         if (chocolates.size > 0) {
-            chocolates.removeAt(Random().nextInt(chocolates.size))
-            return chocolates[Random().nextInt(chocolates.size)]
+            val randomID = Random().nextInt((chocolates.size-1))
+            return chocolates.removeAt(randomID)
         }
         return null
     }

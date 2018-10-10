@@ -2,10 +2,8 @@ package classes
 
 data class Chocolate (
         val name: String
-) {
+): Candy () {
     override fun toString(): String {
-        return """
-            Nombre: ${name}
-        """.trimIndent()
+        return name
     }
 }
