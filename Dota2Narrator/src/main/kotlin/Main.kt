@@ -188,9 +188,7 @@ fun main(args: Array<String>) {
                                              //SE HABILITA LA OPCION PARA MATAR AL ANCIENT
                                              println(menu3())
                                              val opcion3 = readLine()!!
-
-
-
+                                             //todo
 
                                          } else {
                                              println(partida.matanUnaTorre(fueRadiant))
