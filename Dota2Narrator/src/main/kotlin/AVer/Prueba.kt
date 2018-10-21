@@ -1,4 +1,0 @@
-package AVer
-
-class Prueba {
-}
