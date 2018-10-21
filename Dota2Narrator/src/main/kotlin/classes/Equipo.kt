@@ -12,21 +12,21 @@ class Equipo (
         heroes.add(h)
     }
 
-    fun kill(cant: Int): String {
+    fun kill(cant: Int): Boolean {
         //ELIMINACION RANDOM DE HEROES
         if (heroes.size > cant) {
             var kills = cant
-            do {
+            while (kills>0) {
                 val randomID = Random().nextInt((heroes.size-1))
                 heroes.removeAt(randomID)
                 kills -= 1
-            } while (kills>0)
-            return "Murieron $cant heroes"
+            }
+            return true
         }
-        return "No se puede hacer esa cantidad de kills"
+        return false
     }
 
-    fun matarTorre(): String {
+    fun matarTorre(): Boolean {
         //LOGICA PARA MATAR TORRES DEL EQUIPO
         val torresAlive = arrayListOf<Torre>()
         for (t in torres) {
@@ -41,19 +41,20 @@ class Equipo (
                     cont = false
                 }
             } while (cont)
-            return "Murio 1 torre"
+            return true
         }
-        return "Ya se eliminaron todas las torres"
+        //Si retorna falso es porque ya no hay torres vivas y se puede matar al ancient
+        return false
     }
 
-    fun matarAncient(): String {
+    fun matarAncient(): Boolean {
         //LOGICA PARA MATAR EL ANCIENT DEL EQUIPO
         for (t in torres) {
             if (t.isAlive) {
-                return "Aun hay torres vivas"
+                return false
             }
         }
         ancient.muereAncient()
-        return "Muere Ancient"
+        return true
     }
 }

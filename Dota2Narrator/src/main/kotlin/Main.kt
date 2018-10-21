@@ -55,47 +55,150 @@ fun main(args: Array<String>) {
 					heroes.remove(heroes[randomID])
 				}
 
-				while(maxHeroes > 0) {
-					println("\nSELECCION DE HEROES")
+                var continuarEleccion: Boolean
+                while(maxHeroes > 0) {
+                    println("\nSELECCION DE HEROES")
+                    continuarEleccion = true
+
                     //ELECCION DE RADIANT
-                    heroesDisponibles.forEach { println("${it.id}. ${it.localized_name} (${it.type})") }
-					println("ELECCION RADIANT:")
-					eleccion = readLine()!!.toInt()
+                    do {
+                        heroesDisponibles.forEach { println("${it.id}. ${it.localized_name} (${it.type})") }
+                        println("ELECCION RADIANT:")
+                        eleccion = readLine()!!.toInt()
 
-                    for(h in heroesDisponibles) {
-                        if (h.id == eleccion) {
-                            //SE AGREGA EL HEROE AL EQUIPO RADIANT
-                            partida.equipoRadiant.addHeroe(h)
-                            println("${h.localized_name} agregado.")
-                            heroesDisponibles.remove(h)
-                            break
+                        for(h in heroesDisponibles) {
+                            if (h.id == eleccion) {
+                                //SE AGREGA EL HEROE AL EQUIPO RADIANT
+                                partida.equipoRadiant.addHeroe(h)
+                                println("${h.localized_name} agregado.")
+                                heroesDisponibles.remove(h)
+                                continuarEleccion = false
+                                break
+                            }
                         }
-                    }
+                    } while (continuarEleccion)
 
+                    continuarEleccion = true
                     println()
                     //ELECCION DE DIRE
-                    heroesDisponibles.forEach { println("${it.id}. ${it.localized_name} (${it.type})") }
-                    println("ELECCION DIRE:")
-                    eleccion = readLine()!!.toInt()
 
-                    for(h in heroesDisponibles) {
-                        if (h.id == eleccion) {
-                            //SE AGREGA EL HEROE AL EQUIPO DIRE
-                            partida.equipoDire.addHeroe(h)
-                            println("${h.localized_name} agregado.")
-                            heroesDisponibles.remove(h)
-                            break
+                    do {
+                        heroesDisponibles.forEach { println("${it.id}. ${it.localized_name} (${it.type})") }
+                        println("ELECCION DIRE:")
+                        eleccion = readLine()!!.toInt()
+
+                        for(h in heroesDisponibles) {
+                            if (h.id == eleccion) {
+                                //SE AGREGA EL HEROE AL EQUIPO DIRE
+                                partida.equipoDire.addHeroe(h)
+                                println("${h.localized_name} agregado.")
+                                heroesDisponibles.remove(h)
+                                continuarEleccion = false
+                                break
+                            }
                         }
-                    }
+                    } while (continuarEleccion)
 
 					maxHeroes -= 1
 				}
 
                 //INICIO DEL JUEGO
-
                 println(partida.empezarJuego())
 
+                var noHayGanador = true
+                var opcion2: String
+                var fueRadiant: Boolean
 
+                do {
+                    println(menu2())
+                    opcion2 = readLine()!!
+
+                    when(opcion2) {
+                         "1" -> {
+                             //MATAN HEROE
+                             //Mato Radiant o Dire
+                             var radiantODire = false
+                             do {
+                                 println("Fue Radiant quien mato? si/no")
+                                 val fueRadiantLec = readLine()!!
+                                 when(fueRadiantLec) {
+                                     "si", "no" -> {
+                                         radiantODire = true
+                                         fueRadiant = fueRadiantLec == "si"
+
+                                         //Cantidad de muertes
+                                         var cantidadCorrecta = false
+                                         do {
+                                             println("Cuantas muertes? 0-5")
+                                             val cantidadMuertes = readLine()!!
+                                             when(cantidadMuertes) {
+                                                 "0" -> {
+                                                     cantidadCorrecta = true
+                                                 }
+                                                 "1" -> {
+                                                     //Ocurre un kill
+                                                     if (partida.ocurrioUnKill(fueRadiant) == "false") {
+                                                         cantidadCorrecta = false
+                                                     } else {
+                                                         cantidadCorrecta = true
+                                                         println(partida.ocurrioUnKill(fueRadiant))
+                                                     }
+                                                 }
+                                                 "2", "3", "4" -> {
+                                                     //Ocurren dos o mas kills
+                                                     val cantMuertesInt = cantidadMuertes.toInt()
+                                                     if (partida.ocurrieronDosOMasKills(fueRadiant, cantMuertesInt) == "false") {
+                                                         cantidadCorrecta = false
+                                                     } else {
+                                                         cantidadCorrecta = true
+                                                         println(partida.ocurrieronDosOMasKills(fueRadiant, cantMuertesInt))
+                                                     }
+                                                 }
+                                                 "5" -> {
+                                                     //Ocurren 5 kills
+                                                     if (partida.ocurrieronCincoKills(fueRadiant) == "false") {
+                                                         cantidadCorrecta = false
+                                                     } else {
+                                                         cantidadCorrecta = true
+                                                         println(partida.ocurrieronCincoKills(fueRadiant))
+                                                     }
+                                                 }
+                                                 else -> println("Opcion invalida")
+                                             }
+                                         } while (!cantidadCorrecta)
+                                     }
+                                     else -> println("Opcion invalida")
+                                 }
+                             } while (!radiantODire)
+
+                         }
+                         "2" -> {
+                             //MATAN TORRE
+                             //Mato Radiant o Dire
+                             var radiantODire = false
+                             do {
+                                 println("Fue Radiant quien mato? si/no")
+                                 val fueRadiantLec = readLine()!!
+                                 when(fueRadiantLec) {
+                                     "si", "no" -> {
+                                         radiantODire = true
+                                         fueRadiant = fueRadiantLec == "si"
+
+                                         if (partida.matanUnaTorre(fueRadiant) == "false") {
+                                             //todo
+                                         } else {
+                                             println(partida.matanUnaTorre(fueRadiant))
+                                         }
+
+                                     }
+                                     else -> println("Opcion invalida")
+                                 }
+                             } while (!radiantODire)
+                         }
+                         else -> println("Opcion invalida")
+                    }
+
+                } while (noHayGanador)
 
 			}
 			"3" -> continuarJugando = false

@@ -26,41 +26,69 @@ class Partido<T> (
     fun ocurrioUnKill(isRadiantKiller: Boolean): String {
         //MUERE UN HEROE
         if (isRadiantKiller) {
-            equipoDire.kill(1)
+            return if (equipoDire.kill(1)) {
+                narrarPartida(narrator, "unKill")
+            } else {
+                "false"
+            }
         } else {
-            equipoRadiant.kill(1)
+            return if (equipoRadiant.kill(1)) {
+                narrarPartida(narrator, "unKill")
+            } else {
+                "false"
+            }
         }
-        return narrarPartida(narrator, "unKill")
     }
 
     fun ocurrieronDosOMasKills(isRadiantKiller: Boolean, kills: Int): String {
         //MUEREN DOS O MAS HEROES
         if (isRadiantKiller) {
-            equipoDire.kill(kills)
+            return if (equipoDire.kill(kills)) {
+                narrarPartida(narrator, "dosOMasKills")
+            } else {
+                "false"
+            }
         } else {
-            equipoRadiant.kill(kills)
+            return if (equipoRadiant.kill(kills)) {
+                narrarPartida(narrator, "dosOMasKills")
+            } else {
+                "false"
+            }
         }
-        return narrarPartida(narrator, "dosOMasKills")
     }
 
     fun ocurrieronCincoKills(isRadiantKiller: Boolean): String {
         //MUEREN CINCO HEROES
         if (isRadiantKiller) {
-            equipoDire.kill(5)
+            return if (equipoDire.kill(5)) {
+                narrarPartida(narrator, "cincoKills")
+            } else {
+                "false"
+            }
         } else {
-            equipoRadiant.kill(5)
+            return if (equipoRadiant.kill(5)) {
+                narrarPartida(narrator, "cincoKills")
+            } else {
+                "false"
+            }
         }
-        return narrarPartida(narrator, "cincoKills")
     }
 
     fun matanUnaTorre(isRadiantKiller: Boolean): String {
         //MUERE TORRE
         if (isRadiantKiller) {
-            equipoDire.matarTorre()
+            return if (equipoDire.matarTorre()) {
+                narrarPartida(narrator, "matanTorre")
+            } else {
+                "false"
+            }
         } else {
-            equipoRadiant.matarTorre()
+            return if (equipoRadiant.matarTorre()) {
+                narrarPartida(narrator, "matanTorre")
+            } else {
+                "false"
+            }
         }
-        return narrarPartida(narrator, "matanTorre")
     }
 
     fun direGana(): String {
