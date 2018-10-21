@@ -185,11 +185,16 @@ fun main(args: Array<String>) {
                                          fueRadiant = fueRadiantLec == "si"
 
                                          if (partida.matanUnaTorre(fueRadiant) == "false") {
-                                             //todo
+                                             //SE HABILITA LA OPCION PARA MATAR AL ANCIENT
+                                             println(menu3())
+                                             val opcion3 = readLine()!!
+
+
+
+
                                          } else {
                                              println(partida.matanUnaTorre(fueRadiant))
                                          }
-
                                      }
                                      else -> println("Opcion invalida")
                                  }

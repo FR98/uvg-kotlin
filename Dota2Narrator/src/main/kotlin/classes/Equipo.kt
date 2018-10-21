@@ -32,7 +32,7 @@ class Equipo (
         for (t in torres) {
             if (t.isAlive) { torresAlive.add(t) }
         }
-        if (torresAlive.size > 0) {
+        if (torresAlive.size >= 1) {
             var cont = true
             do {
                 val randomID = Random().nextInt((torres.size-1))
@@ -41,6 +41,10 @@ class Equipo (
                     cont = false
                 }
             } while (cont)
+            if (torresAlive.size == 1) {
+                //Si retorna falso es porque ya no hay torres vivas y se puede matar al ancient
+                return false
+            }
             return true
         }
         //Si retorna falso es porque ya no hay torres vivas y se puede matar al ancient
