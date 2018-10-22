@@ -14,10 +14,10 @@ class Equipo (
 
     fun kill(cant: Int): Boolean {
         //ELIMINACION RANDOM DE HEROES
-        if (heroes.size > cant) {
+        if (heroes.size >= cant) {
             var kills = cant
             while (kills>0) {
-                val randomID = Random().nextInt((heroes.size-1))
+                val randomID = Random().nextInt((heroes.size))
                 heroes.removeAt(randomID)
                 kills -= 1
             }
@@ -35,12 +35,13 @@ class Equipo (
         if (torresAlive.size >= 1) {
             var cont = true
             do {
-                val randomID = Random().nextInt((torres.size-1))
+                val randomID = Random().nextInt((torres.size))
                 if (torres[randomID].isAlive) {
                     torres[randomID].muereTorre()
                     cont = false
                 }
             } while (cont)
+
             if (torresAlive.size == 1) {
                 //Si retorna falso es porque ya no hay torres vivas y se puede matar al ancient
                 return false

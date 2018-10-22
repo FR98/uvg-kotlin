@@ -25,70 +25,77 @@ class Partido<T> (
 
     fun ocurrioUnKill(isRadiantKiller: Boolean): String {
         //MUERE UN HEROE
-        if (isRadiantKiller) {
-            return if (equipoDire.kill(1)) {
-                narrarPartida(narrator, "unKill")
-            } else {
-                "false"
-            }
+        val muerteExitosa = if (isRadiantKiller) {
+            equipoDire.kill(1)
         } else {
-            return if (equipoRadiant.kill(1)) {
-                narrarPartida(narrator, "unKill")
-            } else {
-                "false"
-            }
+            equipoRadiant.kill(1)
+        }
+
+        return if (muerteExitosa) {
+            narrarPartida(narrator, "unKill")
+        } else {
+            "Ya se mataron todos los heroes del equipo"
         }
     }
 
     fun ocurrieronDosOMasKills(isRadiantKiller: Boolean, kills: Int): String {
         //MUEREN DOS O MAS HEROES
-        if (isRadiantKiller) {
-            return if (equipoDire.kill(kills)) {
-                narrarPartida(narrator, "dosOMasKills")
-            } else {
-                "false"
-            }
+        val muertesExitosas = if (isRadiantKiller) {
+            equipoDire.kill(kills)
         } else {
-            return if (equipoRadiant.kill(kills)) {
-                narrarPartida(narrator, "dosOMasKills")
-            } else {
-                "false"
-            }
+            equipoRadiant.kill(kills)
+        }
+
+        return if (muertesExitosas) {
+            narrarPartida(narrator, "dosOMasKills")
+        } else {
+            "No se puede matar esa cantidad"
         }
     }
 
     fun ocurrieronCincoKills(isRadiantKiller: Boolean): String {
         //MUEREN CINCO HEROES
-        if (isRadiantKiller) {
-            return if (equipoDire.kill(5)) {
-                narrarPartida(narrator, "cincoKills")
-            } else {
-                "false"
-            }
+        val muertesExitosas = if (isRadiantKiller) {
+            equipoDire.kill(5)
         } else {
-            return if (equipoRadiant.kill(5)) {
-                narrarPartida(narrator, "cincoKills")
-            } else {
-                "false"
-            }
+            equipoRadiant.kill(5)
+        }
+
+        return if (muertesExitosas) {
+            narrarPartida(narrator, "cincoKills")
+        } else {
+            "No se puede matar esa cantidad"
         }
     }
 
     fun matanUnaTorre(isRadiantKiller: Boolean): String {
         //MUERE TORRE
-        if (isRadiantKiller) {
-            return if (equipoDire.matarTorre()) {
-                narrarPartida(narrator, "matanTorre")
-            } else {
-                "false"
-            }
+        val muerteExitosa = if (isRadiantKiller) {
+            equipoDire.matarTorre()
         } else {
-            return if (equipoRadiant.matarTorre()) {
-                narrarPartida(narrator, "matanTorre")
-            } else {
-                "false"
-            }
+            equipoRadiant.matarTorre()
         }
+
+        return if (muerteExitosa) {
+            narrarPartida(narrator, "matanTorre")
+        } else {
+            "Ya murio la ultima torre del equipo"
+        }
+    }
+
+    fun hayTorresVivas(): Boolean {
+        var torresRadiantAlive = 0
+        var torresDireAlive = 0
+        for (t in equipoRadiant.torres) {
+            if (t.isAlive) { torresRadiantAlive += 1 }
+        }
+        for (t in equipoDire.torres) {
+            if (t.isAlive) { torresDireAlive += 1 }
+        }
+        if (torresDireAlive == 0 || torresRadiantAlive == 0) {
+            return false
+        }
+        return true
     }
 
     fun direGana(): String {

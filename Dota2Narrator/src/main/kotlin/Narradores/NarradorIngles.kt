@@ -8,63 +8,54 @@ class NarradorIngles: Narrator {
         when(tipoEvento) {
             "bienvenida" -> {
                 return """
-
                     Welcome to Dota 2
 
                     """.trimIndent()
             }
             "empezarJuego" -> {
                 return """
-
                     Let the game begin...
 
                     """.trimIndent()
             }
             "unKill" -> {
                 return """
-
                     A hero has been killed
 
-                """.trimMargin()
+                    """.trimMargin()
             }
             "dosOMasKills" -> {
                 return """
-
                     They have killed $ heroes
 
                     """.trimIndent()
             }
             "cincoKills" -> {
                 return """
-
                     They have killed 5 heroes
 
                     """.trimIndent()
             }
             "matanTorre" -> {
                 return """
-
-                    A tower has been killed"
+                    A tower has been killed
 
                     """.trimIndent()
             }
             "direGana" -> {
                 return """
-
                     Dire win
 
                     """.trimIndent()
             }
             "radiantGana" -> {
                 return """
-
                     Radiant win
 
                     """.trimIndent()
             }
             else -> {
                 return """
-
                     Incorrect option
 
                     """.trimIndent()
