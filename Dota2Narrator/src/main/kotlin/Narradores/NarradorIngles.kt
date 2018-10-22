@@ -5,61 +5,67 @@ import interfaces.Narrator
 class NarradorIngles: Narrator {
     //FRASES PARA MOMENTOS DEL JUEGO
     override fun narrar (tipoEvento: String): String {
+        var narrando = """
+            -------------------
+            Narrator:
+
+        """.trimIndent()
         when(tipoEvento) {
             "bienvenida" -> {
-                return """
+                narrando += """
                     Welcome to Dota 2
-
+                    -------------------
                     """.trimIndent()
             }
             "empezarJuego" -> {
-                return """
+                narrando += """
                     Let the game begin...
-
+                    -------------------
                     """.trimIndent()
             }
             "unKill" -> {
-                return """
+                narrando += """
                     A hero has been killed
-
+                    -------------------
                     """.trimMargin()
             }
             "dosOMasKills" -> {
-                return """
+                narrando += """
                     They have killed $ heroes
-
+                    -------------------
                     """.trimIndent()
             }
             "cincoKills" -> {
-                return """
+                narrando += """
                     They have killed 5 heroes
-
+                    -------------------
                     """.trimIndent()
             }
             "matanTorre" -> {
-                return """
+                narrando += """
                     A tower has been killed
-
+                    -------------------
                     """.trimIndent()
             }
             "direGana" -> {
-                return """
+                narrando += """
                     Dire win
-
+                    -------------------
                     """.trimIndent()
             }
             "radiantGana" -> {
-                return """
+                narrando += """
                     Radiant win
-
+                    -------------------
                     """.trimIndent()
             }
             else -> {
-                return """
+                narrando += """
                     Incorrect option
-
+                    -------------------
                     """.trimIndent()
             }
         }
+        return narrando
     }
 }

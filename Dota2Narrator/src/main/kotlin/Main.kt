@@ -112,7 +112,7 @@ fun main(args: Array<String>) {
                     var torresRadiantVivas = 0
                     partida.equipoRadiant.torres.forEach { if (it.isAlive) { torresRadiantVivas += 1 } }
                     var torresDireVivas = 0
-                    partida.equipoRadiant.torres.forEach { if (it.isAlive) { torresDireVivas += 1 } }
+                    partida.equipoDire.torres.forEach { if (it.isAlive) { torresDireVivas += 1 } }
                     println("Radiant: Heroes:${partida.equipoRadiant.heroes.size}, Torres:${torresRadiantVivas}")
                     println("Dire: Heroes:${partida.equipoDire.heroes.size}, Torres:${torresDireVivas}")
 
@@ -268,10 +268,10 @@ fun main(args: Array<String>) {
                                             radiantODire = true
                                             fueRadiant = fueRadiantLec == "si"
 
-                                            if (fueRadiant && (torresRadiantVivas == 0)) {
+                                            if (fueRadiant && (torresDireVivas == 0)) {
                                                 println(partida.radiantGana())
                                                 noHayGanador = false
-                                            } else if (!fueRadiant && (torresDireVivas == 0)) {
+                                            } else if (!fueRadiant && (torresRadiantVivas == 0)) {
                                                 println(partida.direGana())
                                                 noHayGanador = false
                                             } else {
