@@ -1,0 +1,4 @@
+package userNotifications
+
+interface UserNotificator {
+}
